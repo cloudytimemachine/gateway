@@ -1,0 +1,12 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "user-facing http proxy cloudy time machine.",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "k8s-scripts": "^2.1.1"
+  },
+  "author": "Ross Kukulinski <ross@kukulinski.com>",
+  "license": "MIT"
+}
