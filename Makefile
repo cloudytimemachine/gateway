@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := all
 
-secrets:
-	kubectl create secret generic gateway-tls --from-file=config/certs --dry-run -o yaml > deploy/gateway-tls.secret.yml
+# secrets:
+# 	kubectl create secret generic gateway-tls --from-file=config/certs --dry-run -o yaml > deploy/gateway-tls.secret.yml
 
 configmap:
 	kubectl create configmap gateway-config --from-file=config/ --dry-run -o yaml > deploy/gateway.configmap.yml
@@ -10,4 +10,4 @@ configmap:
 clean:
 	rm deploy/gateway.configmap.yml deploy/gateway-upstreams.configmap.yml deploy/gateway-tls.secret.yml || true
 
-all: clean secrets configmap
+all: clean  configmap #secrets
