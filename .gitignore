@@ -1,2 +1,4 @@
-deploy
 config/certs
+deploy/*.configmap.yml
+deploy/*.secret.yml
+node_modules

@@ -1,0 +1,53 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: gateway
+  name: gateway
+spec:
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+      - image: nginx:1.9
+        imagePullPolicy: IfNotPresent
+        name: gateway
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        - containerPort: 443
+          protocol: TCP
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /etc/nginx/
+          name: gateway-config
+        - mountPath: /etc/nginx-ssl/
+          name: gateway-tls
+        - mountPath: /etc/nginx-upstreams/
+          name: gateway-upstreams
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+      restartPolicy: Always
+      volumes:
+      - name: gateway-tls
+        secret:
+          secretName: gateway-tls
+      - name: gateway-config
+        configMap:
+          name: gateway-config
+      - name: gateway-upstreams
+        configMap:
+          name: gateway-upstreams
