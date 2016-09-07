@@ -18,6 +18,7 @@ machine:
 dependencies:
   pre:
     - ensure-kubectl
+    - prepare-kubectl
     - npm install
     - make all
   override:
@@ -36,13 +37,11 @@ deployment:
     branch: master
     owner: cloudytimemachine
     commands:
-      - prepare-kubectl
       - kubectl config use-context ${KUBECONTEXTQA}
       - k8s-deploy -f deploy/staging.config
   production:
     tag: /v[0-9]+(\.[0-9]+)*/
     owner: cloudytimemachine
     commands:
-      - prepare-kubectl
       - kubectl config use-context ${KUBECONTEXTPROD}
       - k8s-deploy -f deploy/production.config
