@@ -21,6 +21,9 @@ spec:
           protocol: TCP
         - containerPort: 8080
           protocol: TCP
+        env:
+          - name: BUILD_SHA1
+            value: ":latest"
         volumeMounts:
         - mountPath: /etc/nginx/
           name: gateway-config
