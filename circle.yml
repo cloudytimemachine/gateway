@@ -17,9 +17,9 @@ machine:
 
 dependencies:
   pre:
+    - npm install
     - ensure-kubectl
     - prepare-kubectl
-    - npm install
     - make all
   override:
     - echo "overriding inferred dependencies"
