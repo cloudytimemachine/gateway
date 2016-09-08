@@ -10,4 +10,4 @@ configmap:
 clean:
 	rm deploy/gateway.configmap.yml deploy/gateway-upstreams.configmap.yml deploy/gateway-tls.secret.yml || true
 
-all: clean  configmap #secrets
+all: clean | configmap # secrets
