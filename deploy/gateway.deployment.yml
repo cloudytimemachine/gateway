@@ -5,6 +5,10 @@ metadata:
     app: gateway
   name: gateway
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
   template:
     metadata:
       labels:
