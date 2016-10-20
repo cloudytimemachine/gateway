@@ -5,7 +5,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "k8s-scripts": "^2.1.1"
+    "k8s-scripts": "^3.0.0"
   },
   "author": "Ross Kukulinski <ross@kukulinski.com>",
   "license": "MIT"
